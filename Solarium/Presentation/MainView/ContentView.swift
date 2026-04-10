@@ -8,45 +8,39 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var mainViewModel: MainViewModel
-    @EnvironmentObject var apViewModel: AstronomyPictureViewModel
-    @EnvironmentObject var mwViewModel: MarsWeatherViewModel
+    @StateObject private var apViewModel = AstronomyPictureViewModel()
+    @StateObject private var mvViewModel = MarsWeatherViewModel()
+    @State private var selectedTab = 2
     var body: some View {
-        VStack {
-            Text("The Weather on Mars")
-                .foregroundStyle(Color.white)
-                .font(Font.system(size: 25).bold())
-                
-            Rectangle()
-                .frame(width: 300, height: 1)
-                .foregroundStyle(Color.white)
-                .padding(.bottom, 20)
-            
-            VStack{
-                Image("Mars")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                
-                
-                Rectangle()
-                    .frame(width: 75, height: 45)
-                    .foregroundStyle(Color.orangeBgInfo)
-                    .cornerRadius(15)
+        VStack{
+            if apViewModel.selectedAstronomy == nil {
+                TabView {
+                    AstronomyPictureMain().environmentObject(apViewModel)
+                        .tabItem {
+                            Label("Astronomy Picture", systemImage: "moon.stars")
+                        }
+                        .tag(1)
+                    
+                    MarsWeatherView().environmentObject(mvViewModel)
+                        .tabItem {
+                            Label("Mars Weather", systemImage: "globe.europe.africa.fill")
+                        }
+                        .tag(2)
+                }
+                .onAppear{
+                    selectedTab = 2
+                }
+            } else {
+                ZStack{
+                    AstronomyPictureView().environmentObject(apViewModel)
+
+                }
             }
-            
-            Spacer()
         }
         .background(Color.black)
-        .task {
-            <#code#>
-        }
-        
     }
 }
 
 #Preview {
     ContentView()
-        .environmentObject(MainViewModel())
-        .environmentObject(AstronomyPictureViewModel())
-        .environmentObject(MarsWeatherViewModel())
 }
