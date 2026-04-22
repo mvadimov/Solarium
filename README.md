@@ -35,8 +35,12 @@ Solarium is an iOS app that lets you explore Mars and space using open data from
 - Fetches a list of astronomical objects (images + titles).
 - Tap on a title to open a detailed view with the full image and description.
 - All data is decoded from JSON received via URLSession.
-<img width="275" height="480" alt="AstronomyPicture list" src="https://github.com/user-attachments/assets/965f8a97-b0d4-4763-8cca-26cdd0bdee5a" />
-<img width="275" height="480" alt="AstronomyPicture list" src="https://github.com/user-attachments/assets/0cf8bd2e-d64c-4b6c-8261-0d0fd8652810" />
+<table>
+  <tr>
+    <td><img width="275" height="480" alt="AstronomyPicture list 1" src="https://github.com/user-attachments/assets/965f8a97-b0d4-4763-8cca-26cdd0bdee5a" /></td>
+    <td><img width="275" height="480" alt="AstronomyPicture list 2" src="https://github.com/user-attachments/assets/0cf8bd2e-d64c-4b6c-8261-0d0fd8652810" /></td>
+  </tr>
+</table>
 
 ### 3. Data Loading
 - Loading screen is shown while data is being fetched.
